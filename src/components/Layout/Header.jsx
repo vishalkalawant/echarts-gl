@@ -17,6 +17,10 @@ const Header = () => {
             <Link to="/about" class="nav-link">About</Link>
             <Link to="/sign" class="nav-link">Sing in</Link>
             <Link to="/product" class="nav-link">Product</Link>
+            <Link to="/admin/category/add" class="nav-link">Add User</Link>
+            <Link to="/admin/category/list" class="nav-link">User List</Link>
+
+
             <Dropdown>
                 <Dropdown.Toggle variant="success" id="dropdown-basic">
                   Dropdown

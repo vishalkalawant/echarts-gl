@@ -1,5 +1,6 @@
 import React from 'react'
 import Carousel from 'react-bootstrap/Carousel';
+// import Add from './Admin/Category/Add';
 // import Products from '../Moduls/Products';
 // import ExampleCarouselImage from 'components/ExampleCarouselImage';
 const Home = () => {
@@ -32,6 +33,7 @@ const Home = () => {
       </Carousel.Item>
     </Carousel>
     {/* <Products/> */}
+    
     </>
   )
 }

@@ -1,44 +1,37 @@
-import React, { useState } from 'react'
-import { Button, Card, Container } from 'react-bootstrap'
+import React, { useEffect, useState } from "react";
+// import { Button, Card } from 'react-bootstrap'
 
-const Products = () => {
-
-    const [items,] = useState([
-        {
-            id:1,
-            product_name:"Product1",
-            price:999,
-            image:"/iphone.jpg",
-        },
-
-        {
-            id:2,
-            product_name:"Product2",
-            price:1999,
-            image:"/images.jpeg"
-        },
-    ])
+const Products = ({ title }) => {
+  const [items, setItem] = useState([]);
+  useEffect(() => {
+    fetch("http://localhost:4001/api/category")
+      .then((res) => res.json())
+      .then((data) => setItem(data))
+      .catch((error) => console.log(error));
+  }, []);
   return (
-    <Container className='row'>
-        {items.map((elem) =>
-        {
-            return (
-            <Card key={elem.id} className='col-3'>
-                <Card.Img variant="top" src={process.env.PUBLIC_URL + elem.image}/>
-                <Card.Body>
-                    <Card.Title>{elem.product_name}</Card.Title>
-                    <Card.Text>${elem.price}</Card.Text>
-                    <Button variant='primary'>Buy</Button>
-                    <Button variant='danger'>Cancel</Button>
+    <>
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          {items.map((item) => (
+            <tr key={item._id}>
+              <td>{item.title}</td>
+              <td>{item.description}</td>
+              <td>
+                <img alt="err" src={`${item.thumbnail}`} height="100" />
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </>
+  );
+};
 
-                </Card.Body>
-            </Card>
-            );
-        })}
-    </Container>
-)
-
-
-}
-
-export default Products
+export default Products;
